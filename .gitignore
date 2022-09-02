@@ -108,3 +108,5 @@ dist
 /out
 
 /build
+
+/src/resource/*.json*
