@@ -8,7 +8,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "tsc && node ./build/main.js"
+    "copy:json": "cp -r ./src/resource ./build",
+    "start": "tsc && yarn copy:json && node ./build/main.js"
   },
   "dependencies": {
     "@types/jsonlines": "^0.1.2",

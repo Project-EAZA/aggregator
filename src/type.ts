@@ -50,6 +50,7 @@ export interface Course {
   subjectAggregate: string;
   titleSuggest: TitleSuggest;
   matched_queries?: any;
+  teachings: Teaching[];
 }
 
 export interface SchoolCollege {
@@ -81,6 +82,16 @@ export interface Breadth {
   description: string;
 }
 
+export interface GeneralEd {
+  code: string;
+  description: string;
+}
+
+export interface EthnicStudies {
+  code: string;
+  description: string;
+}
+
 export interface LettersAndScienceCredits {
   code: string;
   description: string;
@@ -105,4 +116,93 @@ export interface Payload {
 export interface TitleSuggest {
   input: string[];
   payload: Payload;
+}
+
+export interface CourseAttributes {
+  id: string;
+  name: string;
+  subject: Subject;
+  courseNumber: string;
+  generalEd?: GeneralEd;
+  ethnicStudies?: EthnicStudies;
+  breadths: Breadth[];
+  levels: Level[];
+}
+
+export interface Id {
+  $oid: string;
+}
+
+export interface Subject {
+  name: string;
+  abbreviation: string;
+  code: string;
+}
+
+export interface Times {
+  startTime: number;
+  endTime: number;
+}
+
+export interface Days {
+  days: string[];
+}
+
+export interface Schedule {
+  times: Times;
+  days: Days;
+  uuid: string;
+}
+
+export interface Room {
+  facilityCode: string;
+  roomCode: string;
+  uuid: string;
+}
+
+export interface Instructor {
+  id: number;
+  name: string;
+}
+
+export interface Grades {
+  A: number;
+  AB: number;
+  NW: number;
+  I: number;
+  OTHER: number;
+  D: number;
+  S: number;
+  CR: number;
+  BC: number;
+  N: number;
+  NR: number;
+  C: number;
+  U: number;
+  B: number;
+  F: number;
+  P: number;
+}
+
+export interface Section {
+  termCode: number;
+  courseNumber: number;
+  sectionType: string;
+  sectionNumber: number;
+  schedule: Schedule;
+  room: Room;
+  instructors: Instructor[];
+  grades: Grades;
+}
+
+export interface Teaching {
+  termCode: number;
+  subjects: Subject[];
+  sections: Section[];
+}
+
+export interface CourseGrades {
+  courseNumber: number;
+  name: string;
+  teachings: Teaching[];
 }
